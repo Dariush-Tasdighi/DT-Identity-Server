@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Domain.Seedwork;
 using Domain.SharedKernel;
 using Dtat.Seedwork.Abstractions;

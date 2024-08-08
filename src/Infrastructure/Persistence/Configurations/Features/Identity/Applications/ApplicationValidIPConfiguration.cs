@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Domain.SharedKernel;
+using Microsoft.EntityFrameworkCore;
 using Domain.Features.Identity.Applications;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Domain.SharedKernel;
 
 namespace Persistence.Configurations.Features.Identity.Applications;
 
@@ -21,6 +21,7 @@ internal sealed class ApplicationValidIPConfiguration : object, IEntityTypeConfi
 		// **************************************************
 		builder
 			.Property(current => current.IP4Address)
+			.HasMaxLength(maxLength: IP4Address.MaxLength)
 			.HasConversion(current => current.Value, value => new IP4Address(value));
 
 		builder

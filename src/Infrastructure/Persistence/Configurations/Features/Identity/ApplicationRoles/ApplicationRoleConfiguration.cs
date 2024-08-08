@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Domain.SharedKernel;
+using Microsoft.EntityFrameworkCore;
 using Domain.Features.Identity.ApplicationRoles;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Domain.SharedKernel;
 
 namespace Persistence.Configurations.Features.Identity.ApplicationRoles;
 
@@ -32,10 +32,23 @@ internal sealed class ApplicationRoleConfiguration : object, IEntityTypeConfigur
 		// **************************************************
 		builder
 			.Property(current => current.Name)
+			.HasMaxLength(maxLength: Name.MaxLength)
 			.HasConversion(current => current.Value, value => new Name(value));
 
 		builder
 			.HasIndex(current => new { current.ApplicationId, current.Name })
+			.IsUnique(unique: true)
+			;
+		// **************************************************
+
+		// **************************************************
+		builder
+			.Property(current => current.Title)
+			.HasMaxLength(maxLength: Title.MaxLength)
+			.HasConversion(current => current.Value, value => new Title(value));
+
+		builder
+			.HasIndex(current => new { current.ApplicationId, current.Title })
 			.IsUnique(unique: true)
 			;
 		// **************************************************

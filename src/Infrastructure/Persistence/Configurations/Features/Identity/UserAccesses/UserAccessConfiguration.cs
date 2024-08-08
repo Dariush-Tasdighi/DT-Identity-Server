@@ -1,13 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Domain.Features.Identity.Applications;
+using Domain.Features.Identity.UserAccesses;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Domain.SharedKernel;
 
-namespace Persistence.Configurations.Features.Identity.Applications;
+namespace Persistence.Configurations.Features.Identity.UserAccesses;
 
-internal sealed class UserValidIPConfiguration : object, IEntityTypeConfiguration<UserValidIP>
+internal sealed class UserAccessesConfiguration : object, IEntityTypeConfiguration<UserAccess>
 {
-	public void Configure(EntityTypeBuilder<UserValidIP> builder)
+	public void Configure(EntityTypeBuilder<UserAccess> builder)
 	{
 		// **************************************************
 		// **************************************************
@@ -20,12 +19,7 @@ internal sealed class UserValidIPConfiguration : object, IEntityTypeConfiguratio
 
 		// **************************************************
 		builder
-			.Property(current => current.IP4Address)
-			.HasMaxLength(maxLength: IP4Address.MaxLength)
-			.HasConversion(current => current.Value, value => new IP4Address(value));
-
-		builder
-			.HasIndex(current => new { current.ApplicationId, current.IP4Address })
+			.HasIndex(current => new { current.UserId, current.ApplicationId })
 			.IsUnique(unique: true)
 			;
 		// **************************************************

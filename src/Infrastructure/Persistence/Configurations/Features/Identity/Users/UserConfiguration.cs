@@ -21,58 +21,25 @@ internal sealed class UserConfiguration : object, IEntityTypeConfiguration<User>
 		// **************************************************
 		builder
 			.Property(p => p.Username)
+			.HasMaxLength(maxLength: Username.MaxLength)
 			.HasConversion(id => id.Value, value => new Username(value));
 
 		builder
-			.HasIndex(current => current.Username)
+			.HasIndex(current => new { current.Username })
 			.IsUnique(unique: true)
 			;
 		// **************************************************
 
 		// **************************************************
-		//builder
-		//	.ComplexProperty(current => current.Id), current =>
-		//	{
-		//		current
-		//			.Property(other => other.Value)
-		//			.HasColumnName(name: "Id")
-		//			;
-		//	});
+		builder
+			.Property(p => p.EmailAddress)
+			.HasMaxLength(maxLength: EmailAddress.MaxLength)
+			.HasConversion(id => id.Value, value => new EmailAddress(value));
 
-		//builder
-		//	.ComplexProperty(current => current.Id);
-
-		//builder
-		//	.HasKey(d => d.Id);
-
-		//builder
-		//	.HasOne(d => d.Id);
-
-		//builder
-		//	.Property(p => p.Id)
-		//	.HasConversion(id => id.Value, value => new UserId(value));
-		// **************************************************
-
-		// **************************************************
-		//builder
-		//	.Property(current => current.EmailAddress)
-		//	.HasMaxLength(maxLength: 250)
-		//	;
-
-		//builder
-		//	.Property(current => current.EmailAddress)
-		//	.IsUnicode(unicode: false)
-		//	;
-
-		//builder
-		//	.HasIndex(current => current.EmailAddress)
-		//	.IsUnique(unique: true)
-		//	;
-
-		//builder
-		//	.HasIndex(current => new { current.EmailAddress })
-		//	.IsUnique(unique: true)
-		//	;
+		builder
+			.HasIndex(current => new { current.EmailAddress })
+			.IsUnique(unique: true)
+			;
 		// **************************************************
 		// **************************************************
 		// **************************************************

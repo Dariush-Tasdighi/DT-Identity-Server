@@ -3,6 +3,7 @@
 using Domain.Features.Identity.Users;
 using Domain.Features.Identity.Companies;
 using Domain.Features.Identity.Applications;
+using Domain.Features.Identity.UserAccesses;
 using Domain.Features.Identity.ApplicationRoles;
 
 namespace Persistence;
@@ -16,6 +17,7 @@ public class ApplicationDbContext : DbContext
 
 	public DbSet<User> Users { get; set; }
 	public DbSet<Company> Companies { get; set; }
+	public DbSet<UserAccess> UserAccesses { get; set; }
 	public DbSet<Application> Applications { get; set; }
 	public DbSet<ApplicationRole> ApplicationRoles { get; set; }
 
