@@ -3,6 +3,9 @@ using Mediator;
 
 namespace Dtat.Seedwork.Abstractions;
 
+/// <summary>
+/// Marker
+/// </summary>
 //public interface IDomainEvent : INotification
 //{
 //}

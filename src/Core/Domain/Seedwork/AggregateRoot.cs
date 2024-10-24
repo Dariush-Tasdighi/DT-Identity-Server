@@ -73,9 +73,17 @@ using System.Collections.Generic;
 
 namespace Domain.Seedwork;
 
-public abstract class AggregateRoot	: Entity, IAggregateRoot
+public abstract class AggregateRoot : Entity, IAggregateRoot
 {
 	private readonly List<IDomainEvent> _domainEvents = [];
+
+	//public IList<IDomainEvent> DomainEvents
+	//{
+	//	get
+	//	{
+	//		return _domainEvents;
+	//	}
+	//}
 
 	public IReadOnlyCollection<IDomainEvent> DomainEvents
 	{

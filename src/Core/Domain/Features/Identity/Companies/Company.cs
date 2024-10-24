@@ -9,8 +9,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Features.Identity.Companies;
 
-public class Company :
-	AggregateRoot, IEntityHasIsActive
+public class Company : AggregateRoot, IEntityHasIsActive
 {
 #pragma warning disable CS8618
 	private Company() : base()

@@ -7,11 +7,11 @@ using System.Collections.Generic;
 using Domain.Features.Identity.Companies;
 using System.ComponentModel.DataAnnotations;
 using Domain.Features.Identity.ApplicationRoles;
+using Domain.Features.Identity.UserAccesses;
 
 namespace Domain.Features.Identity.Applications;
 
-public class Application :
-	AggregateRoot, IEntityHasIsActive
+public class Application : AggregateRoot, IEntityHasIsActive
 {
 #pragma warning disable CS8618
 	private Application() : base()
@@ -85,6 +85,7 @@ public class Application :
 		}
 	}
 
+	public virtual IList<UserAccess> UserAccesses { get; } = [];
 	public virtual IList<UserValidIP> UserValidIPs { get; } = [];
 	public virtual IList<ApplicationRole> ApplicationRoles { get; } = [];
 	public virtual IList<ApplicationValidIP> ApplicationValidIPs { get; } = [];

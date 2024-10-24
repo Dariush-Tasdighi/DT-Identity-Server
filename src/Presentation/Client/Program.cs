@@ -145,12 +145,12 @@ using Domain.Features.Identity.UserAccesses;
 		applicationDbContext.Users
 
 		.Include(current => current.Companies)
-		.ThenInclude(current => current.Applications)
-		.ThenInclude(current => current.UserValidIPs)
+			.ThenInclude(current => current.Applications)
+				.ThenInclude(current => current.UserValidIPs)
 
 		.Include(current => current.Companies)
-		.ThenInclude(current => current.Applications)
-		.ThenInclude(current => current.ApplicationValidIPs)
+			.ThenInclude(current => current.Applications)
+				.ThenInclude(current => current.ApplicationValidIPs)
 
 		.Where(current => current.Username == username)
 		.FirstOrDefaultAsync();

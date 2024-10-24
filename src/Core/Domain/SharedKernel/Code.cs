@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.SharedKernel;
 
+//[ComplexType]
+//public record Code(long Value) : object;
+
 [ComplexType]
 public record Code : object
 {

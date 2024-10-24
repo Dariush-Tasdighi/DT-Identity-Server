@@ -4,6 +4,8 @@ using Domain.SharedKernel;
 using Dtat.Seedwork.Abstractions;
 using System.ComponentModel.DataAnnotations;
 using Domain.Features.Identity.Applications;
+using Domain.Features.Identity.UserAccesses;
+using System.Collections.Generic;
 
 namespace Domain.Features.Identity.ApplicationRoles;
 
@@ -36,4 +38,6 @@ public class ApplicationRole :
 	public Title Title { get; private set; }
 
 	public bool IsActive { get; private set; }
+
+	public virtual IList<UserAccessRole> UserAccessRoles { get; } = [];
 }

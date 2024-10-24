@@ -21,11 +21,11 @@ namespace Domain.Seedwork;
 //	public TStronglyTypedId Id { get; init; }
 //}
 
-public class Entity	: object, IEntity
+public abstract class Entity : object, IEntity
 {
-	//public Entity(Guid id) : base()
+	//public Entity() : base()
 	//{
-	//	Id = id;
+	//	Id = Guid.NewGuid();
 	//}
 
 	public Guid Id { get; init; } = Guid.NewGuid();
